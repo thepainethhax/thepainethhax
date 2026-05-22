@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>thepainethhax</title>
+  <title>ThePain | Ethical Hacker</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,145 +17,182 @@
       scroll-behavior: smooth;
     }
 
+    :root {
+      --bg: #050816;
+      --card: rgba(12, 18, 35, 0.7);
+      --border: rgba(255,255,255,0.08);
+      --green: #7dffcf;
+      --blue: #00c8ff;
+      --text: #f4f4f4;
+      --muted: #b5b5b5;
+    }
+
     body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: #050505;
-      color: white;
+      cursor: crosshair;
+      background: radial-gradient(circle at top right, rgba(0,200,255,0.08), transparent 30%),
+                  radial-gradient(circle at bottom left, rgba(0,255,157,0.08), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: rgba(0,255,170,0.08);
-      filter: blur(120px);
-      top: -150px;
-      right: -100px;
-      z-index: -1;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      width: 400px;
-      height: 400px;
-      background: rgba(0,170,255,0.08);
-      filter: blur(120px);
-      bottom: -120px;
-      left: -120px;
-      z-index: -1;
     }
 
     nav {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 24px 10%;
       position: fixed;
       top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(0,0,0,0.45);
       border-bottom: 1px solid rgba(255,255,255,0.05);
+      z-index: 1000;
     }
 
-    nav h1 {
-      font-size: 24px;
-      color: #00ffaa;
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
     }
 
     nav ul {
       display: flex;
-      gap: 24px;
       list-style: none;
+      gap: 30px;
     }
 
     nav a {
-      text-decoration: none;
       color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-size: 15px;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -5px;
+      background: linear-gradient(to right, var(--green), var(--blue));
       transition: 0.3s ease;
     }
 
-    nav a:hover {
-      color: #00ffaa;
+    nav a:hover::after {
+      width: 100%;
     }
 
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      padding: 0 20px;
+      padding: 140px 20px 80px;
     }
 
-    .hero h2 {
-      font-size: 72px;
-      line-height: 1;
-      margin-bottom: 20px;
-      background: linear-gradient(to right, #00ffaa, #00ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        filter: drop-shadow(0 0 10px rgba(0,255,170,0.2));
-      }
-      to {
-        filter: drop-shadow(0 0 20px rgba(0,255,170,0.5));
-      }
-    }
-
-    .hero-image {
-      width: 240px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 30px;
-      border: 3px solid rgba(0,255,170,0.4);
-      box-shadow: 0 0 40px rgba(0,255,170,0.25);
-      animation: float 4s ease-in-out infinite;
+    .hero img {
+      width: 300px;
+      max-width: 90%;
+      border-radius: 28px;
+      margin-bottom: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 0 25px rgba(0,255,157,0.2),
+        0 0 60px rgba(0,200,255,0.15);
+      animation: float 5s ease-in-out infinite;
     }
 
     @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
     }
 
-    .hero p {
-      max-width: 700px;
-      color: #cfcfcf;
-      font-size: 18px;
+    .gradient-text {
+      background: linear-gradient(135deg, #00ff9d 0%, #7dffcf 45%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0,255,157,0.25);
+    }
+
+    .gradient-text-blue {
+      background: linear-gradient(135deg, #00c8ff 0%, #7de3ff 45%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0,200,255,0.25);
+      margin-left: 8px;
+    }
+
+    .hero h1 {
+      font-size: 90px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+    }
+
+    .hero h2 {
+      font-size: 20px;
+      color: #d5d5d5;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #7dffcf 0%, #00e1ff 50%, #b388ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 18px rgba(0,225,255,0.18);
+      max-width: 850px;
+      font-size: 20px;
+      color: #9fd8ff;
       line-height: 1.8;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .btns {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn {
-      padding: 14px 28px;
-      background: linear-gradient(135deg, #00ffaa, #00ccff);
-      color: black;
-      border-radius: 12px;
+      padding: 15px 32px;
+      border-radius: 14px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .primary {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: black;
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.04);
+      color: white;
     }
 
     .btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 30px rgba(0,255,170,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(0,255,157,0.25);
     }
 
     section {
@@ -162,96 +200,111 @@
     }
 
     .section-title {
-      font-size: 42px;
-      margin-bottom: 40px;
-      color: #00ffaa;
+      font-size: 46px;
+      margin-bottom: 55px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .about {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
     .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 30px;
-      backdrop-filter: blur(20px);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 35px;
+      border-radius: 28px;
+      backdrop-filter: blur(18px);
       transition: 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: rgba(0,255,157,0.08);
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
     }
 
     .card:hover {
       transform: translateY(-10px);
-      border-color: rgba(0,255,170,0.4);
-      box-shadow: 0 10px 30px rgba(0,255,170,0.1);
+      border-color: rgba(0,255,157,0.25);
+      box-shadow:
+        0 0 25px rgba(0,255,157,0.08),
+        0 0 50px rgba(0,200,255,0.08);
+    }
+
+    .card h3 {
+      color: var(--green);
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
     }
 
     .skills {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
     }
 
-    .skill-box {
+    .skill {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       padding: 24px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.03);
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
+      font-weight: 600;
       transition: 0.3s ease;
     }
 
-    .skill-box:hover {
-      background: rgba(0,255,170,0.08);
-      transform: scale(1.05);
+    .skill:hover {
+      transform: translateY(-6px);
+      background: rgba(0,255,157,0.08);
+      box-shadow: 0 0 20px rgba(0,255,157,0.12);
     }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+    .bugcrowd {
+      margin-top: 45px;
+      text-align: center;
     }
 
-    .project-card h3 {
-      margin-bottom: 12px;
-      color: #00ffaa;
-    }
-
-    .project-card p {
-      color: #cfcfcf;
-      line-height: 1.7;
+    .bugcrowd a {
+      color: var(--green);
+      font-size: 18px;
+      text-decoration: none;
     }
 
     footer {
-      text-align: center;
       padding: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
       color: #888;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .socials {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .socials a {
-      color: white;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .socials a:hover {
-      color: #00ffaa;
+      margin-top: 80px;
     }
 
     @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 58px;
+      }
+
       .hero h2 {
-        font-size: 48px;
+        font-size: 16px;
+        line-height: 1.6;
       }
 
       nav {
@@ -259,55 +312,121 @@
       }
 
       nav ul {
-        gap: 14px;
+        gap: 18px;
       }
     }
+      .glow-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,157,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(40px);
+      }
+    }
+
+    .spotlight {
+      position: fixed;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0,255,157,0.12), rgba(0,200,255,0.08), transparent 70%);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+      z-index: -1;
+      filter: blur(10px);
+    }
+
+    .cursor-trail {
+      position: fixed;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0,255,157,1), rgba(0,200,255,0.9));
+      box-shadow:
+        0 0 10px rgba(0,255,157,0.9),
+        0 0 25px rgba(0,200,255,0.8),
+        0 0 40px rgba(0,255,157,0.7);
+      transform: translate(-50%, -50%);
+      animation: fadeOut 1s linear forwards;
+      z-index: 9999;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2);
+      }
+    }
+
   </style>
 </head>
 <body>
 
+  <div class="glow-bg"></div>
+  <div class="spotlight" id="spotlight"></div>
+
   <nav>
-    <h1>thepainethhax</h1>
+    <div class="logo">ThePain</div>
 
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <img src="pain-logo.png" alt="thepainethhax" class="hero-image">
-    <h2>FULL STACK<br>DEVELOPER</h2>
+    <img src="pain-logo.png" alt="ThePain Logo">
 
-    <p>
-      I create futuristic web experiences with clean UI, smooth animations,
-      and modern technologies. Building fast, beautiful and scalable websites.
+    <h1><span class="gradient-text">The</span><span class="gradient-text-blue">Pain</span></h1>
+
+    <h2>ETHICAL HACKER • BUG HUNTER</h2>
+
+    <p class="quote">
+      "Those who do not understand true pain can never understand true peace."
     </p>
 
-    <a href="#projects" class="btn">View Projects</a>
+    <div class="btns">
+      <a href="https://bugcrowd.com/h/ThePain" target="_blank" class="btn primary">Bugcrowd Profile</a>
+      <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
   </section>
 
   <section id="about">
     <h2 class="section-title">About Me</h2>
 
-    <div class="about">
+    <div class="cards">
       <div class="card">
         <h3>Who Am I?</h3>
-        <br>
+
         <p>
-          Hey, I'm <strong>thepainethhax</strong>. I love creating modern websites,
-          futuristic UI designs and interactive web experiences.
+          I am ThePain — an ethical hacker and bug bounty hunter focused on discovering critical vulnerabilities, securing applications, and exploring advanced cybersecurity techniques.
         </p>
       </div>
 
       <div class="card">
-        <h3>What I Do</h3>
-        <br>
+        <h3>Mission</h3>
+
         <p>
-          Frontend development, UI/UX design, animations, responsive websites,
-          and performance optimized applications.
+          Passionate about offensive security, web application testing, vulnerability assessment, and responsible disclosure.
         </p>
       </div>
     </div>
@@ -317,41 +436,47 @@
     <h2 class="section-title">Skills</h2>
 
     <div class="skills">
-      <div class="skill-box">HTML5</div>
-      <div class="skill-box">CSS3</div>
-      <div class="skill-box">JavaScript</div>
-      <div class="skill-box">React</div>
-      <div class="skill-box">Tailwind CSS</div>
-      <div class="skill-box">Node.js</div>
+      <div class="skill">Web Application Security</div>
+      <div class="skill">Bug Bounty Hunting</div>
+      <div class="skill">OWASP Testing</div>
+      <div class="skill">API Security</div>
+      <div class="skill">Recon Automation</div>
+      <div class="skill">Linux & Networking</div>
+      <div class="skill">JavaScript Exploitation</div>
+      <div class="skill">Vulnerability Assessment</div>
     </div>
   </section>
 
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
+  <section id="work">
+    <h2 class="section-title">Work</h2>
 
-    <div class="projects">
-
-      <div class="card project-card">
-        <h3>Portfolio Website</h3>
+    <div class="cards">
+      <div class="card">
+        <h3>Bug Hunting</h3>
         <p>
-          Modern responsive developer portfolio with animations and dark UI.
+          Hunting vulnerabilities across modern web applications and APIs with focus on high-impact security flaws.
         </p>
       </div>
 
-      <div class="card project-card">
-        <h3>Cyber Dashboard</h3>
+      <div class="card">
+        <h3>Security Research</h3>
         <p>
-          Futuristic admin dashboard with glassmorphism and analytics charts.
+          Exploring attack surfaces, analyzing misconfigurations, and developing offensive security workflows.
         </p>
       </div>
 
-      <div class="card project-card">
-        <h3>AI Web App</h3>
+      <div class="card">
+        <h3>Automation</h3>
         <p>
-          Interactive AI-powered application built using modern frontend stack.
+          Building scripts and automation pipelines for reconnaissance, endpoint discovery, and vulnerability testing.
         </p>
       </div>
+    </div>
 
+    <div class="bugcrowd">
+      <a href="https://bugcrowd.com/h/ThePain" target="_blank">
+        Visit My Bugcrowd Profile →
+      </a>
     </div>
   </section>
 
@@ -359,19 +484,41 @@
     <h2 class="section-title">Contact</h2>
 
     <div class="card">
-      <p>Email: yourmail@example.com</p>
+      <p>
+        Interested in collaboration, security testing, or cybersecurity projects? Reach out through Bugcrowd or GitHub.
+      </p>
 
-      <div class="socials">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
+      <br>
+
+      <div class="btns">
+        <a href="https://bugcrowd.com/h/ThePain" target="_blank" class="btn primary">Bugcrowd</a>
+        <a href="https://github.com/thepainethhax" target="_blank" class="btn secondary">GitHub</a>
       </div>
     </div>
   </section>
 
   <footer>
-    © 2026 thepainethhax — All Rights Reserved
+    © 2026 THE PAIN — Cybersecurity Portfolio
   </footer>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+
+    document.addEventListener('mousemove', function(e) {
+      spotlight.style.left = e.pageX + 'px';
+      spotlight.style.top = e.pageY + 'px';
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = e.pageX + 'px';
+      trail.style.top = e.pageY + 'px';
+
+      document.body.appendChild(trail);
+
+      setTimeout(() => {
+        trail.remove();
+      }, 1000);
+    });
+  </script>
 
 </body>
 </html>
